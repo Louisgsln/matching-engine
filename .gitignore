@@ -1,30 +1,20 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
+# ==============================================================================
+# C/C++ - Compiled Object files
+# ==============================================================================
 *.slo
 *.lo
 *.o
 *.obj
+*.su
 
 # Precompiled Headers
 *.gch
 *.pch
 
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
 # Compiled Dynamic libraries
 *.so
 *.dylib
 *.dll
-
-# Fortran module files
-*.mod
-*.smod
 
 # Compiled Static libraries
 *.lai
@@ -36,6 +26,125 @@
 *.exe
 *.out
 *.app
+*.i*86
+*.x86_64
+*.hex
 
-# debug information files
+# Debug files
+*.dSYM/
+*.suo
+*.idb
+*.pdb
+*.ilk
 *.dwo
+
+# ==============================================================================
+# Build Directories & CMake
+# ==============================================================================
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+CMakeUserPresets.json
+
+# Dossiers de build (standards)
+build/
+build-*/
+out/
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+
+# ==============================================================================
+# Package Managers (vcpkg / Conan / CPM)
+# ==============================================================================
+vcpkg_installed/
+.vcpkg/
+vcpkg/
+.conan/
+CPM_modules/
+
+# ==============================================================================
+# Visual Studio (MSVC)
+# ==============================================================================
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.ncb
+*.sdf
+*.db
+*.opendb
+*.VC.db
+*.vcxitems
+*.vcxitems.user
+*.dir
+
+# Profiling / Logs
+*.psess
+*.vsp
+*.vspx
+*.sap
+*.log
+
+# ==============================================================================
+# Visual Studio Code (VS Code)
+# ==============================================================================
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# ==============================================================================
+# CLion / JetBrains IDEs
+# ==============================================================================
+.idea/
+cmake-build-*/
+*.iws
+*.iml
+*.ipr
+
+# ==============================================================================
+# OS Generated Files
+# ==============================================================================
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+.directory
+
+# ==============================================================================
+# Miscellaneous (Logs, DBs, Core dumps)
+# ==============================================================================
+*.log
+*.sqlite
+*.db
+core
+core.*
+vgcore.*
