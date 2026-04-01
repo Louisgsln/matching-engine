@@ -154,21 +154,21 @@ void LiveDisplay::render()
     int askCount = std::min((int)wsBook.asks.size(), bookDepth);
     for (int i = askCount - 1; i >= 0; --i) {
         std::ostringstream line;
-        line << "\033[31m  " << std::fixed << std::setprecision(2) << std::setw(10) << wsBook.asks[i].price
+        line << "\033[31m  " << std::fixed << std::setprecision(8) << std::setw(16) << wsBook.asks[i].price
             << "  |  " << std::setprecision(5) << std::setw(10) << wsBook.asks[i].qty << "\033[0m";
         leftPane.push_back(line.str());
     }
 
     // Spread
     std::ostringstream spreadLine;
-    spreadLine << "\033[1;36m  >>> SPREAD: " << std::fixed << std::setprecision(2) << spread << " <<<\033[0m";
+    spreadLine << "\033[1;36m  >>> SPREAD: " << std::fixed << std::setprecision(8) << spread << " <<<\033[0m";
     leftPane.push_back(spreadLine.str());
 
     // Bids
     int bidCount = std::min((int)wsBook.bids.size(), bookDepth);
     for (int i = 0; i < bidCount; ++i) {
         std::ostringstream line;
-        line << "\033[32m  " << std::fixed << std::setprecision(2) << std::setw(10) << wsBook.bids[i].price
+        line << "\033[32m  " << std::fixed << std::setprecision(8) << std::setw(16) << wsBook.bids[i].price
             << "  |  " << std::setprecision(5) << std::setw(10) << wsBook.bids[i].qty << "\033[0m";
         leftPane.push_back(line.str());
     }
@@ -195,7 +195,7 @@ void LiveDisplay::render()
             const Trade& tLocal = localTrades[i];
             std::ostringstream line;
             line << "  \033[32m#" << tLocal.id << "\033[0m @ "
-                << std::fixed << std::setprecision(2) << tLocal.price
+                << std::fixed << std::setprecision(8) << tLocal.price
                 << " (\033[36m" << std::setprecision(4) << tLocal.quantity << "\033[0m)";
             rightPane.push_back(line.str());
         }
