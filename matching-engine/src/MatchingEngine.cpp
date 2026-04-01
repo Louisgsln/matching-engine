@@ -173,7 +173,7 @@ void MatchingEngine::displayStatus() const
     std::cout << "  Running:           " << (running.load() ? "Yes" : "No") << "\n";
     std::cout << "  Instruments:       " << instruments.size() << "\n";
     std::cout << "  Daily Trades:      " << dailyTradeCount.load() << "\n";
-    std::cout << "  Daily Volume:      " << std::fixed << std::setprecision(2)
+    std::cout << "  Daily Volume:      " << std::fixed << std::setprecision(8)
         << dailyVolume.load() << "\n";
     std::cout << "  Total Trades:      " << totalTradeCount.load() << "\n";
     std::cout << "  Total Volume:      " << totalVolume.load() << "\n";

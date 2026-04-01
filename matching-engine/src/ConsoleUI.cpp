@@ -165,11 +165,11 @@ void ConsoleUI::showBinanceKlines()
         for (const auto& k : klines) {
             time_t t = static_cast<time_t>(k[0] / 1000.0);
             std::cout << "  " << std::put_time(std::localtime(&t), "%Y-%m-%d %H:%M")
-                << "  " << std::fixed << std::setprecision(2)
-                << std::setw(14) << k[1]
-                << std::setw(16) << k[2]
-                << std::setw(16) << k[3]
-                << std::setw(16) << k[4]
+                << "  " << std::fixed << std::setprecision(8)
+                << std::setw(18) << k[1]
+                << std::setw(20) << k[2]
+                << std::setw(20) << k[3]
+                << std::setw(20) << k[4]
                 << std::setw(14) << k[5]
                 << "\n";
         }
