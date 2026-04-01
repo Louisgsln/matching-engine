@@ -38,6 +38,11 @@ private:
 
     long long initialLocalTrades{ 0 };
     std::chrono::system_clock::time_point startTime;
+
+    // For instantaneous TPS calculation (sliding window)
+    long long prevRenderTrades{ 0 };
+    std::chrono::system_clock::time_point prevRenderTime;
+    double smoothedTps{ 0.0 };
 };
 
 #endif

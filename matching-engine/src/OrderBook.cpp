@@ -56,6 +56,8 @@ int OrderBook::matchOrders()
                 trade.timestamp = std::chrono::system_clock::now();
 
                 trades.push_back(trade);
+                if (trades.size() > MAX_TRADE_HISTORY)
+                    trades.erase(trades.begin());
 
                 // Notify engine
                 if (tradeCallback) tradeCallback(trade);
