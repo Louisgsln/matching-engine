@@ -59,6 +59,9 @@ void LiveDisplay::start(const std::string& sym, int depth)
 
     initialLocalTrades = engine.getStats(sym).totalTrades;
     startTime = std::chrono::system_clock::now();
+    prevRenderTrades = initialLocalTrades;
+    prevRenderTime = startTime;
+    smoothedTps = 0.0;
 
     ws.setTradeCallback([](const WsTrade&) { /* On ignore les trades Binance ici */ });
 
@@ -106,7 +109,17 @@ void LiveDisplay::render()
     auto now = std::chrono::system_clock::now();
     long long elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - startTime).count();
     long long sessionLocalTrades = localStats.totalTrades - initialLocalTrades;
-    double localTps = (elapsed > 0) ? (double)sessionLocalTrades / (double)elapsed : 0.0;
+
+    // Instantaneous TPS: trades since last render / time since last render, smoothed with EMA
+    double dtSec = std::chrono::duration<double>(now - prevRenderTime).count();
+    long long deltaTrades = localStats.totalTrades - prevRenderTrades;
+    if (dtSec > 0.0) {
+        double instantTps = (double)deltaTrades / dtSec;
+        smoothedTps = 0.3 * instantTps + 0.7 * smoothedTps;
+    }
+    prevRenderTrades = localStats.totalTrades;
+    prevRenderTime = now;
+    double localTps = smoothedTps;
 
     std::ostringstream out;
     clearScreen();

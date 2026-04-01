@@ -47,6 +47,8 @@ private:
     std::vector<Trade> trades;
     TradeCallback      tradeCallback;
     mutable std::mutex bookMutex;
+
+    static constexpr size_t MAX_TRADE_HISTORY = 1000;
 };
 
 #endif
